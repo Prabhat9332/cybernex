@@ -1,0 +1,6 @@
+{
+  "name": "CyberNex",
+  "description": "Multi-tool platform with AI and utilities, complete with Admin Dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
