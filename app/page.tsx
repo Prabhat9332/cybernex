@@ -6,372 +6,227 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { 
   ArrowRight, 
-  Shield, 
+  ShieldCheck, 
   Zap, 
-  FileText, 
-  Scissors, 
   Image as ImageIcon, 
-  Wand2, 
-  ChevronDown, 
-  CheckCircle, 
-  Star,
-  ExternalLink,
-  HelpCircle,
-  Clock,
-  UserCheck
+  FileText, 
+  Cpu,
+  Smartphone,
+  Lock,
+  GlobeLock,
+  WifiOff,
+  Search,
+  Scissors
 } from "lucide-react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import { Typewriter } from 'react-simple-typewriter';
 
-const FAQ_ITEMS = [
-  {
-    q: "How secure are my uploaded files on CyberNex?",
-    a: "Your files never leave your browser! All core operations on CyberNex, such as image compression, background removal, and PDF merging, run 100% locally on your device via client-side WebAssembly and JavaScript. No remote storage or server uploads are required for operations, ensuring maximum privacy."
-  },
-  {
-    q: "How to create passport-size photos with print templates?",
-    a: "Simple! Navigate to our Passport Photo Maker under the Tools page, upload any portrait, adjust the crop to passport specifications, clear the background in one click, and download an aligned grid (e.g., 35x45mm dimensions on an A4 layout block) completely ready for instant printing."
-  },
-  {
-    q: "What benefits does the Pro Membership provide?",
-    a: "The Pro Plan unlocks access to advanced AI-powered tools (including Gemini-powered document drafting, high-fidelity translation tools, and offline OCR scanners), removes execution limit gates, enables ultra-high quality image rendering, and provides premium email assistance."
-  },
-  {
-    q: "Are the government links authentic?",
-    a: "Yes! The Government Links catalog references official state and central websites directly (like UIDAI, PM Kisan Portal, and RTPS). We provide a unified routing hub to help cyber cafes and individuals locate correct application gateways without falling prey to phishing mirrors."
-  }
-];
-
 export default function Home() {
-  const [activeFaq, setActiveFaq] = useState<number | null>(null);
-
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-950 dark:bg-slate-950 dark:text-slate-50 flex flex-col">
+    <div className="min-h-screen flex flex-col relative overflow-hidden">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden py-24 md:py-32 shrink-0">
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
-          <div className="absolute top-[10%] left-[5%] w-[35%] h-[35%] rounded-full bg-blue-500/10 blur-[120px]" />
-          <div className="absolute bottom-[20%] right-[10%] w-[40%] h-[40%] rounded-full bg-indigo-500/10 blur-[130px]" />
-        </div>
+      {/* Global Background Effects */}
+      <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">
+         <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-[#6C63FF]/5 blur-[120px]" />
+         <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-[#8B5CF6]/5 blur-[120px]" />
+         <div className="absolute top-[40%] left-[20%] w-[30%] h-[30%] rounded-full bg-[#A855F7]/3 blur-[100px]" />
+      </div>
 
+      {/* Hero Section */}
+      <section className="relative pt-44 pb-20 md:pt-52 md:pb-32 shrink-0">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center max-w-3xl mx-auto space-y-6">
+          <div className="text-center max-w-4xl mx-auto space-y-6">
+            
             <motion.div 
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 border border-blue-100 dark:border-blue-900/30"
+              transition={{ duration: 0.6 }}
+              className="inline-flex justify-center items-center gap-6 px-6 py-2.5 rounded-full bg-white/40 dark:bg-slate-900/40 border border-white/60 dark:border-slate-700/50 backdrop-blur-md shadow-sm mb-4"
             >
-              <Zap className="w-3.5 h-3.5 fill-current" /> All-In-One Cyber Cafe Hub
+              <span className="flex items-center gap-1.5 text-xs font-bold text-slate-700 dark:text-slate-300"><WifiOff className="w-3.5 h-3.5 text-[#6C63FF]"/> Works Offline</span>
+              <span className="w-1 h-1 rounded-full bg-slate-300"></span>
+              <span className="flex items-center gap-1.5 text-xs font-bold text-slate-700 dark:text-slate-300"><GlobeLock className="w-3.5 h-3.5 text-[#8B5CF6]"/> 100% Private</span>
+              <span className="w-1 h-1 rounded-full bg-slate-300 hidden sm:block"></span>
+              <span className="hidden sm:flex items-center gap-1.5 text-xs font-bold text-slate-700 dark:text-slate-300"><Zap className="w-3.5 h-3.5 text-[#A855F7]"/> Fast Processing</span>
             </motion.div>
 
             <motion.h1 
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl sm:text-6xl font-black tracking-tight leading-tight min-h-[120px] sm:min-h-0"
+              className="text-5xl sm:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.1] min-h-[140px] sm:min-h-[160px]"
             >
-              <Typewriter
-                words={['Digital Services at', 'Next-Gen Tools at', 'Cyber Cafe Hub at']}
-                loop={true}
-                cursor
-                cursorStyle='_'
-                typeSpeed={70}
-                deleteSpeed={50}
-                delaySpeed={2000}
-              />
-              <br className="sm:hidden" />
-              <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-indigo-400 sm:ml-2">
-                Your Fingertips
+              All Your Digital Tools <br className="hidden sm:block"/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6C63FF] via-[#8B5CF6] to-[#A855F7]">
+                in One Place
               </span>
             </motion.h1>
 
             <motion.p 
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-lg text-slate-600 dark:text-slate-400"
+              className="text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed"
             >
-              Locally-processed tools for lightning-quick PDF editing, automated passport photo alignment, seamless government links, and document translation. Zero server uploads. Complete privacy.
+              Fast, secure, privacy-focused tools that work directly in your browser. From PDF manipulation to image compression, done instantly.
             </motion.p>
 
             <motion.div 
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
+              className="pt-8 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-2xl mx-auto w-full"
             >
-              <Link 
-                href="/tools" 
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 text-base font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-2xl shadow-lg shadow-blue-500/20 transition-all hover:scale-[1.01]"
-              >
-                Explore Utility Tools <ArrowRight className="w-5 h-5" />
-              </Link>
-              <Link 
-                href="/auth/register" 
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 text-base font-semibold text-slate-700 hover:text-slate-900 border border-slate-200 hover:bg-slate-50 dark:border-slate-800 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-900/50 rounded-2xl transition-all"
-              >
-                <UserCheck className="w-5 h-5" /> Register Account
-              </Link>
+              <div className="relative w-full max-w-md group">
+                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <Search className="w-5 h-5 text-slate-400 group-focus-within:text-[#6C63FF] transition-colors" />
+                 </div>
+                 <input 
+                    type="text" 
+                    placeholder="Search for tools... (e.g. PDF Merge)"
+                    className="w-full pl-12 pr-4 py-4 rounded-2xl bg-white/60 dark:bg-slate-900/60 border border-white/60 dark:border-slate-700/50 backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-[#6C63FF]/50 focus:border-[#6C63FF] shadow-lg shadow-slate-200/20 dark:shadow-none transition-all outline-none font-medium text-slate-700 dark:text-slate-200"
+                 />
+                 <div className="absolute inset-y-2 right-2">
+                    <button className="h-full px-4 rounded-xl bg-[#6C63FF] text-white text-sm font-bold shadow-md hover:bg-[#5b54e5] transition-colors">
+                       Search
+                    </button>
+                 </div>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
+      {/* Categories & Features Grid */}
+      <section id="categories" className="py-20 relative z-10">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+           <div className="flex flex-col sm:flex-row items-end justify-between mb-12">
+              <div>
+                 <h2 className="text-3xl font-extrabold text-slate-900 dark:text-white">Tool Categories</h2>
+                 <p className="text-slate-500 mt-2">Explore our wide range of tailored utilities.</p>
+              </div>
+           </div>
+
+           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+              {[
+                { title: 'PDF Tools', icon: FileText, color: 'from-blue-500 to-cyan-500', shadow: 'shadow-blue-500/20' },
+                { title: 'Image Tools', icon: ImageIcon, color: 'from-purple-500 to-pink-500', shadow: 'shadow-purple-500/20' },
+                { title: 'AI Assistants', icon: Cpu, color: 'from-indigo-500 to-[#6C63FF]', shadow: 'shadow-indigo-500/20' },
+                { title: 'Calculators', icon: Smartphone, color: 'from-emerald-400 to-teal-500', shadow: 'shadow-emerald-500/20' },
+              ].map((cat, i) => (
+                <Link href="/tools" key={i} className="group relative bg-white/40 dark:bg-slate-900/40 backdrop-blur-xl rounded-3xl p-6 border border-white/50 dark:border-slate-700/50 hover:bg-white/60 dark:hover:bg-slate-800/60 transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-xl">
+                   <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${cat.color} ${cat.shadow} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                      <cat.icon className="w-7 h-7 text-white" />
+                   </div>
+                   <h3 className="text-lg font-bold text-slate-900 dark:text-white">{cat.title}</h3>
+                   <div className="mt-4 flex items-center gap-1 text-sm font-semibold text-[#6C63FF] opacity-0 group-hover:opacity-100 transition-opacity">
+                      Explore <ArrowRight className="w-4 h-4" />
+                   </div>
+                </Link>
+              ))}
+           </div>
+        </div>
+      </section>
+
       {/* Popular Tools */}
-      <section className="py-20 border-t border-slate-100 dark:border-slate-800/80 bg-white/40 dark:bg-slate-950/20 relative z-10 shrink-0">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-12">
-            <div>
-              <h2 className="text-3xl font-extrabold tracking-tight">Popular Digital Tools</h2>
-              <p className="text-slate-600 dark:text-slate-400 mt-2 text-sm">Most accessed utilities by Cyber users daily.</p>
-            </div>
-            <Link href="/tools" className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline">
-              View all tools <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
+      <section className="py-24 relative z-10 w-full">
+         <div className="absolute inset-0 bg-white/20 dark:bg-slate-900/20 backdrop-blur-3xl -skew-y-2 z-0 scale-y-110" />
+         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+           
+           <div className="text-center mb-16">
+             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Most Popular Tools</h2>
+             <p className="text-slate-500 mt-4 max-w-2xl mx-auto">Lightning fast utilities that run entirely in your local browser environment.</p>
+           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              
+              {/* Tool Card 1 */}
+              <div className="group relative bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl rounded-[2rem] p-8 border border-white/60 dark:border-slate-700/50 hover:border-[#6C63FF]/30 hover:bg-white/80 dark:hover:bg-slate-800/80 transition-all duration-500 hover:-translate-y-2 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(108,99,255,0.1)]">
+                 <div className="flex items-start justify-between mb-8">
+                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500/10 to-indigo-500/10 border border-blue-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                       <ImageIcon className="w-8 h-8 text-[#6C63FF]" />
+                    </div>
+                 </div>
+                 <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">Image Compressor</h3>
+                 <p className="text-slate-500 leading-relaxed mb-8">
+                    Reduce JPG, PNG, and WebP file sizes instantly to precise KB limits. Perfect for government form uploads and fast web assets.
+                 </p>
+                 <Link href="/tools/image" className="absolute bottom-8 left-8 right-8 inline-flex items-center justify-center gap-2 py-3.5 bg-slate-100 dark:bg-slate-800 hover:bg-[#6C63FF] hover:text-white text-slate-800 dark:text-slate-200 rounded-xl font-bold transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#6C63FF]/25">
+                    Open Tool <ArrowRight className="w-4 h-4" />
+                 </Link>
+                 {/* Padding to account for absolute button */}
+                 <div className="h-14"></div>
+              </div>
+
+              {/* Tool Card 2 */}
+              <div className="group relative bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl rounded-[2rem] p-8 border border-white/60 dark:border-slate-700/50 hover:border-[#8B5CF6]/30 hover:bg-white/80 dark:hover:bg-slate-800/80 transition-all duration-500 hover:-translate-y-2 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(139,92,246,0.1)]">
+                 <div className="flex items-start justify-between mb-8">
+                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                       <Scissors className="w-8 h-8 text-[#8B5CF6]" />
+                    </div>
+                 </div>
+                 <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">Background Remover</h3>
+                 <p className="text-slate-500 leading-relaxed mb-8">
+                    Eliminate image backgrounds locally using efficient WebAI models. Crisp edges, no server uploads, fully secure.
+                 </p>
+                 <Link href="/tools/image" className="absolute bottom-8 left-8 right-8 inline-flex items-center justify-center gap-2 py-3.5 bg-slate-100 dark:bg-slate-800 hover:bg-[#8B5CF6] hover:text-white text-slate-800 dark:text-slate-200 rounded-xl font-bold transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#8B5CF6]/25">
+                    Open Tool <ArrowRight className="w-4 h-4" />
+                 </Link>
+                 <div className="h-14"></div>
+              </div>
+
+              {/* Tool Card 3 */}
+              <div className="group relative bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl rounded-[2rem] p-8 border border-white/60 dark:border-slate-700/50 hover:border-[#A855F7]/30 hover:bg-white/80 dark:hover:bg-slate-800/80 transition-all duration-500 hover:-translate-y-2 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(168,85,247,0.1)]">
+                 <div className="flex items-start justify-between mb-8">
+                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500/10 to-purple-500/10 border border-indigo-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                       <FileText className="w-8 h-8 text-[#A855F7]" />
+                    </div>
+                 </div>
+                 <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">PDF Merge</h3>
+                 <p className="text-slate-500 leading-relaxed mb-8">
+                    Combine multiple PDF documents into a single file directly in your browser. Reorder pages intuitively.
+                 </p>
+                 <Link href="/tools/pdf" className="absolute bottom-8 left-8 right-8 inline-flex items-center justify-center gap-2 py-3.5 bg-slate-100 dark:bg-slate-800 hover:bg-[#A855F7] hover:text-white text-slate-800 dark:text-slate-200 rounded-xl font-bold transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#A855F7]/25">
+                    Open Tool <ArrowRight className="w-4 h-4" />
+                 </Link>
+                 <div className="h-14"></div>
+              </div>
+
+           </div>
+           
+           <div className="mt-16 text-center">
+             <Link href="/tools" className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-bold bg-[#6C63FF] hover:bg-[#5b54e5] text-white rounded-2xl shadow-[0_8px_20px_rgba(108,99,255,0.3)] hover:-translate-y-0.5 transition-all">
+                Browse All Utilities <ArrowRight className="w-5 h-5" />
+             </Link>
+           </div>
+         </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-24 relative z-10 text-center">
+         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mb-16">The CyberNex Difference</h2>
             
-            {/* Card 1 */}
-            <div className="bg-white dark:bg-slate-900/60 rounded-3xl p-6 border border-slate-200/50 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow group relative">
-               <span className="absolute top-4 right-4 bg-blue-50 text-blue-700 dark:bg-blue-500/10 dark:text-blue-400 text-xs px-2.5 py-1 rounded-full font-bold">Free</span>
-               <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center text-blue-600 dark:text-blue-400 mb-5 group-hover:scale-110 transition-transform">
-                  <ImageIcon className="w-6 h-6" />
-               </div>
-               <h3 className="text-lg font-bold">Image Compressor</h3>
-               <p className="text-slate-600 dark:text-slate-400 text-sm mt-2 mb-6">
-                 Compress JPEG, PNG & WebP images completely offline. Reduce weight below KB constraints for form uploads.
-               </p>
-               <Link href="/tools/image" className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-800/80 rounded-xl text-sm font-semibold transition-colors">
-                 Open Compressor <ArrowRight className="w-4 h-4" />
-               </Link>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+               
+               {[
+                 { title: "100% Private", desc: "Files never leave your device. All computing is edge-local.", icon: ShieldCheck, color: "text-emerald-500" },
+                 { title: "Super Fast", desc: "No queue times, no uploads. Operations run instantly.", icon: Zap, color: "text-[#6C63FF]" },
+                 { title: "Works Offline", desc: "Load the app once, use it completely disconnected.", icon: WifiOff, color: "text-[#8B5CF6]" },
+                 { title: "Free Tools", desc: "Core utilities are permanently free, no watermarks.", icon: GlobeLock, color: "text-[#A855F7]" },
+               ].map((feature, i) => (
+                 <div key={i} className="bg-white/40 dark:bg-slate-900/40 backdrop-blur-xl rounded-3xl p-8 border border-white/60 dark:border-slate-700/50 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-2">
+                    <div className="mx-auto w-14 h-14 bg-white/80 dark:bg-slate-800 rounded-2xl shadow-sm border border-white dark:border-slate-700 flex items-center justify-center mb-6">
+                       <feature.icon className={`w-6 h-6 ${feature.color}`} />
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{feature.title}</h3>
+                    <p className="text-slate-500 text-sm leading-relaxed">{feature.desc}</p>
+                 </div>
+               ))}
+
             </div>
-
-            {/* Card 2 */}
-            <div className="bg-white dark:bg-slate-900/60 rounded-3xl p-6 border border-slate-200/50 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow group relative">
-               <span className="absolute top-4 right-4 bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400 text-xs px-2.5 py-1 rounded-full font-bold">Free</span>
-               <div className="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/30 rounded-2xl flex items-center justify-center text-emerald-600 dark:text-emerald-400 mb-5 group-hover:scale-110 transition-transform">
-                  <Scissors className="w-6 h-6" />
-               </div>
-               <h3 className="text-lg font-bold">Background Remover</h3>
-               <p className="text-slate-600 dark:text-slate-400 text-sm mt-2 mb-6">
-                 Eliminate photo backgrounds locally in your browser. Powered by Client AI, fast, crisp, completely secure.
-               </p>
-               <Link href="/tools/image" className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-800/80 rounded-xl text-sm font-semibold transition-colors">
-                 Remove BG <ArrowRight className="w-4 h-4" />
-               </Link>
-            </div>
-
-            {/* Card 3 */}
-            <div className="bg-white dark:bg-slate-900/60 rounded-3xl p-6 border border-slate-200/50 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow group relative">
-               <span className="absolute top-4 right-4 bg-purple-50 text-purple-700 dark:bg-purple-500/10 dark:text-purple-400 text-xs px-2.5 py-1 rounded-full font-bold text-center">Pro</span>
-               <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-2xl flex items-center justify-center text-purple-600 dark:text-purple-400 mb-5 group-hover:scale-110 transition-transform">
-                  <Wand2 className="w-6 h-6" />
-               </div>
-               <h3 className="text-lg font-bold">AI Document Drafts</h3>
-               <p className="text-slate-600 dark:text-slate-400 text-sm mt-2 mb-6">
-                 Draft official request letters, standard complaints, legal summaries and resumes securely with integrated models.
-               </p>
-               <Link href="/tools" className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-800/80 rounded-xl text-sm font-semibold transition-colors">
-                 Try AI Drafting <ArrowRight className="w-4 h-4" />
-               </Link>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* Govt & Yojana */}
-      <section className="py-20 border-t border-slate-100 dark:border-slate-800/80 relative z-10 shrink-0">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-xl mx-auto mb-12">
-            <h2 className="text-3xl font-extrabold tracking-tight">Direct Government Portal Quicklinks</h2>
-            <p className="text-slate-600 dark:text-slate-400 mt-2 text-sm">Authentic links to central & state yojana facilities.</p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-             <a href="https://uidai.gov.in" target="_blank" rel="noopener noreferrer" className="p-5 rounded-2xl border border-slate-200/60 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col justify-between hover:border-blue-500 transition-colors group">
-               <div>
-                  <h4 className="font-bold text-slate-900 dark:text-white group-hover:text-blue-600 transition-colors">Aadhaar Services</h4>
-                  <p className="text-xs text-slate-500 mt-1">Verify, download Aadhaar card or find update centers.</p>
-               </div>
-               <div className="flex items-center justify-between mt-6 text-xs font-semibold text-blue-600 dark:text-blue-400">
-                  <span>Visit official portal</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
-               </div>
-             </a>
-
-             <a href="https://www.pan.utiitsl.com" target="_blank" rel="noopener noreferrer" className="p-5 rounded-2xl border border-slate-200/60 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col justify-between hover:border-blue-500 transition-colors group">
-               <div>
-                  <h4 className="font-bold text-slate-900 dark:text-white group-hover:text-blue-600 transition-colors">UTI PAN Portal</h4>
-                  <p className="text-xs text-slate-500 mt-1">Apply for new PAN card, check status, or corrections.</p>
-               </div>
-               <div className="flex items-center justify-between mt-6 text-xs font-semibold text-blue-600 dark:text-blue-400">
-                  <span>UTIITS PAN Desk</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
-               </div>
-             </a>
-
-             <a href="https://rtps.bihar.gov.in" target="_blank" rel="noopener noreferrer" className="p-5 rounded-2xl border border-slate-200/60 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col justify-between hover:border-blue-500 transition-colors group">
-               <div>
-                  <h4 className="font-bold text-slate-900 dark:text-white group-hover:text-blue-600 transition-colors">Bihar RTPS Service</h4>
-                  <p className="text-xs text-slate-500 mt-1">Apply for Residence, Income, and Caste certificates.</p>
-               </div>
-               <div className="flex items-center justify-between mt-6 text-xs font-semibold text-blue-600 dark:text-blue-400">
-                  <span>Go to RTPS Bihar</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
-               </div>
-             </a>
-
-             <a href="https://pmkisan.gov.in" target="_blank" rel="noopener noreferrer" className="p-5 rounded-2xl border border-slate-200/60 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col justify-between hover:border-blue-500 transition-colors group">
-               <div>
-                  <h4 className="font-bold text-slate-900 dark:text-white group-hover:text-blue-600 transition-colors">PM Kisan Yojana</h4>
-                  <p className="text-xs text-slate-500 mt-1">Check farmer benefit status, installment plans, e-KYC.</p>
-               </div>
-               <div className="flex items-center justify-between mt-6 text-xs font-semibold text-blue-600 dark:text-blue-400">
-                  <span>Kisan Portal</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
-               </div>
-             </a>
-          </div>
-
-          <div className="mt-8 text-center">
-            <Link href="/govt-links" className="inline-flex items-center gap-1 bg-slate-100 hover:bg-slate-200 dark:bg-slate-900 dark:hover:bg-slate-800 text-xs font-bold px-4 py-2 rounded-xl transition-colors">
-               Explore Govt Links directory <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Membership Plans */}
-      <section className="py-20 border-t border-slate-100 dark:border-slate-800/80 bg-slate-100/40 dark:bg-slate-900/10 relative z-10 shrink-0">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-xl mx-auto mb-16">
-            <h2 className="text-3xl font-extrabold tracking-tight">Simple Membership Plans</h2>
-            <p className="text-slate-600 dark:text-slate-400 mt-2 text-sm">Flexible options curated for cyber cafe executives and individuals.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-             
-             {/* Free Plan */}
-             <div className="bg-white dark:bg-slate-900 rounded-3xl p-8 border border-slate-200 dark:border-slate-800 flex flex-col justify-between relative shadow-sm">
-                <div>
-                   <h3 className="text-xl font-bold">Standard Free Plan</h3>
-                   <p className="text-slate-500 text-sm mt-1">Essential tools for daily offline usage</p>
-                   
-                   <div className="my-6">
-                      <span className="text-4xl font-extrabold text-slate-900 dark:text-white">$0</span>
-                      <span className="text-slate-500 text-sm ml-1">/ lifetime</span>
-                   </div>
-
-                   <hr className="border-slate-100 dark:border-slate-800 my-6" />
-
-                   <ul className="space-y-3.5 text-sm">
-                      <li className="flex items-center gap-2.5 text-slate-700 dark:text-slate-300">
-                         <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0" />
-                         Image Compressor down to KB constraints
-                      </li>
-                      <li className="flex items-center gap-2.5 text-slate-700 dark:text-slate-300">
-                         <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0" />
-                         Basic Passport Photo align templates
-                      </li>
-                      <li className="flex items-center gap-2.5 text-slate-700 dark:text-slate-300">
-                         <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0" />
-                         Unified government desk portals routing
-                      </li>
-                   </ul>
-                </div>
-
-                <Link href="/auth/register" className="w-full text-center py-3 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/50 font-bold rounded-2xl text-sm transition-all mt-8">
-                   Get Started Free
-                </Link>
-             </div>
-
-             {/* Pro Plan */}
-             <div className="bg-white dark:bg-slate-900 rounded-3xl p-8 border-2 border-blue-500/60 dark:border-blue-500/40 flex flex-col justify-between relative shadow-md shadow-blue-500/5">
-                <span className="absolute top-4 right-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
-                   <Star className="w-3 h-3 fill-current" /> Recommended
-                </span>
-                
-                <div>
-                   <h3 className="text-xl font-bold">Pro Cafe Premium</h3>
-                   <p className="text-slate-500 text-sm mt-1">Advanced tools & unlimited processing power</p>
-                   
-                   <div className="my-6 flex items-baseline">
-                      <span className="text-4xl font-extrabold text-slate-900 dark:text-white">$15</span>
-                      <span className="text-slate-500 text-sm ml-1">/ month</span>
-                   </div>
-
-                   <hr className="border-slate-100 dark:border-slate-800 my-6" />
-
-                   <ul className="space-y-3.5 text-sm">
-                      <li className="flex items-center gap-2.5 text-slate-700 dark:text-slate-300">
-                         <CheckCircle className="w-4 h-4 text-blue-500 shrink-0" />
-                         Double-speed background removal processing
-                      </li>
-                      <li className="flex items-center gap-2.5 text-slate-700 dark:text-slate-300">
-                         <CheckCircle className="w-4 h-4 text-blue-500 shrink-0" />
-                         AI official Request Letter & Resume Drafting
-                      </li>
-                      <li className="flex items-center gap-2.5 text-slate-700 dark:text-slate-300">
-                         <CheckCircle className="w-4 h-4 text-blue-500 shrink-0" />
-                         Premium template layouts, customized A4 grid scales
-                      </li>
-                      <li className="flex items-center gap-2.5 text-slate-700 dark:text-slate-300">
-                         <CheckCircle className="w-4 h-4 text-blue-500 shrink-0" />
-                         Priority email & digital portal chat support
-                      </li>
-                   </ul>
-                </div>
-
-                <Link href="/pricing" className="w-full text-center py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold rounded-2xl text-sm shadow-md transition-all mt-8">
-                   Go Pro Today
-                </Link>
-             </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* Accordion FAQ */}
-      <section className="py-20 border-t border-slate-100 dark:border-slate-800/80 relative z-10 shrink-0">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-extrabold tracking-tight">Frequently Asked Questions</h2>
-            <p className="text-slate-600 dark:text-slate-400 mt-2 text-sm">Locate solutions rapidly. Find the answer to everything.</p>
-          </div>
-
-          <div className="space-y-3.5">
-             {FAQ_ITEMS.map((faq, idx) => (
-                <div key={idx} className="bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-700 rounded-2xl transition-all">
-                   <button 
-                      onClick={() => setActiveFaq(activeFaq === idx ? null : idx)}
-                      className="w-full text-left px-6 py-4 flex items-center justify-between font-bold text-slate-900 dark:text-white"
-                   >
-                      <span>{faq.q}</span>
-                      <ChevronDown className={`w-4 h-4 text-slate-500 transition-transform ${activeFaq === idx ? 'rotate-180' : ''}`} />
-                   </button>
-                   <AnimatePresence>
-                      {activeFaq === idx && (
-                         <motion.div 
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            className="overflow-hidden"
-                         >
-                            <div className="px-6 pb-5 pt-1 text-sm text-slate-600 dark:text-slate-400 border-t border-slate-50 dark:border-slate-800 leading-relaxed">
-                               {faq.a}
-                            </div>
-                         </motion.div>
-                      )}
-                   </AnimatePresence>
-                </div>
-             ))}
-          </div>
-        </div>
+         </div>
       </section>
 
       <Footer />

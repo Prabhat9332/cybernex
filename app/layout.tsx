@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
-      <body className="font-sans antialiased text-slate-900 bg-white dark:bg-slate-900 dark:text-slate-100">
+      <body className="font-sans antialiased text-[#1A1F36] bg-[#F7F8FC] dark:bg-[#0B0F19] dark:text-slate-100">
         <ThemeProvider>
           <AuthProvider>
              {children}
